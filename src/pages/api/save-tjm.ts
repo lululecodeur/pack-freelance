@@ -8,6 +8,8 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 const prisma = new PrismaClient();
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  console.log('📦 DATABASE_URL =', process.env.DATABASE_URL);
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Méthode non autorisée' });
   }
@@ -26,10 +28,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
 
     res.status(200).json({ message: 'TJM sauvegardé', data: freelance });
-  } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.error('❌ Prisma error:', error.message);
-    }
-    res.status(500).json({ error: 'Erreur serveur' });
+  } catch (error: any) {
+    console.error('❌ Prisma error:', error);
+    res.status(500).json({ error: 'Erreur serveur', details: error.message });
   }
 }
