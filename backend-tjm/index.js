@@ -7,23 +7,31 @@ const prisma = new PrismaClient();
 const app = express();
 
 const corsOptions = {
-  origin: ['http://localhost:3000', 'http://localhost:3002', 'https://pack-freelance.vercel.app'],
+  origin: function (origin, callback) {
+    const allowedOrigins = [
+      'http://localhost:3000',
+      'http://localhost:3002',
+      'https://pack-freelance.vercel.app',
+    ];
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS: ' + origin));
+    }
+  },
   methods: ['GET', 'POST', 'OPTIONS'],
   credentials: true,
 };
 
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
-
 app.use(bodyParser.json());
 
 app.post('/api/save-tjm', async (req, res) => {
-  console.log('📥 Reçu dans /api/save-tjm:', req.body);
-
+  console.log('📥 Reçu:', req.body);
   const { email, objectifMensuel, joursParMois, tjmCalcule } = req.body;
 
   if (!email || !objectifMensuel || !joursParMois || !tjmCalcule) {
-    console.warn('⛔ Données manquantes:', req.body);
     return res.status(400).json({ error: 'Champs manquants' });
   }
 
@@ -36,7 +44,7 @@ app.post('/api/save-tjm', async (req, res) => {
 
     res.status(200).json({ success: true, data: result });
   } catch (err) {
-    console.error('❌ Erreur détaillée :', err);
+    console.error('❌ Erreur Prisma:', err);
     res.status(500).json({ error: 'Erreur serveur', details: err.message });
   }
 });
@@ -46,7 +54,6 @@ app.get('/', (req, res) => {
 });
 
 const PORT = process.env.PORT || 8080;
-
 app.listen(PORT, () => {
   console.log(`✅ Serveur lancé sur http://localhost:${PORT}`);
 });
