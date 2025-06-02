@@ -12,26 +12,26 @@ const allowedOrigins = [
   'https://pack-freelance.vercel.app',
 ];
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        console.log('⛔ Origin non autorisée:', origin);
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-    methods: ['GET', 'POST', 'OPTIONS'],
-  })
-);
+// Middleware CORS
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
 
+// Body parser
 app.use(bodyParser.json());
 
-app.options('*', cors()); // OPTIONS global
+// Preflight OPTIONS handler
+app.options('*', (req, res) => {
+  res.sendStatus(200);
+});
 
 app.post('/api/save-tjm', async (req, res) => {
-  console.log('📨 POST reçu:', req.body);
   const { email, objectifMensuel, joursParMois, tjmCalcule } = req.body;
 
   if (!email || !objectifMensuel || !joursParMois || !tjmCalcule) {
@@ -53,10 +53,10 @@ app.post('/api/save-tjm', async (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.send('🎉 Backend pack-freelance opérationnel !');
+  res.send('✅ Backend opérationnel');
 });
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  console.log(`🚀 Serveur live sur http://localhost:${PORT}`);
+  console.log(`✅ Serveur lancé sur http://localhost:${PORT}`);
 });
