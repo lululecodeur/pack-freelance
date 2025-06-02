@@ -5,7 +5,7 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const app = express();
 
-// CORS fix total
+// CORS fix total de fou
 app.use((req, res, next) => {
   const allowedOrigins = ['http://localhost:3002', 'https://pack-freelance.vercel.app'];
   const origin = req.headers.origin;
