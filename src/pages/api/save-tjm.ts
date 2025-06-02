@@ -24,8 +24,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
 
     res.status(200).json({ message: 'TJM sauvegardé', data: freelance });
-  } catch (error: any) {
-    console.error('❌ Prisma error:', error.message, error.stack);
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error('❌ Prisma error:', error.message, error.stack);
+    }
     res.status(500).json({ error: 'Erreur serveur' });
   }
 }
