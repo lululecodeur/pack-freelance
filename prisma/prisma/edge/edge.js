@@ -136,6 +136,10 @@ const config = {
         "fromEnvVar": null,
         "value": "windows",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "rhel-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
@@ -143,7 +147,7 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../.env",
+    "rootEnvPath": null,
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../..",
@@ -162,8 +166,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n}\n\ngenerator edge_client {\n  provider = \"prisma-client-js\"\n  output   = \"./prisma/edge\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Freelance {\n  id              Int      @id @default(autoincrement())\n  email           String   @unique\n  objectifMensuel Int\n  joursParMois    Int\n  tjmCalcule      Int\n  createdAt       DateTime @default(now())\n  updatedAt       DateTime @updatedAt\n}\n",
-  "inlineSchemaHash": "6d92f9e1174c8b3efa1ec1006185be369fcd13c2b31848d3109cf6a168a763bb",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n}\n\ngenerator edge_client {\n  provider      = \"prisma-client-js\"\n  output        = \"./prisma/edge\"\n  binaryTargets = [\"native\", \"rhel-openssl-3.0.x\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Freelance {\n  id              Int      @id @default(autoincrement())\n  email           String   @unique\n  objectifMensuel Int\n  joursParMois    Int\n  tjmCalcule      Int\n  createdAt       DateTime @default(now())\n  updatedAt       DateTime @updatedAt\n}\n",
+  "inlineSchemaHash": "c60a89ef9275208891345134f748cb448d472308aa84a0c1899f3e7d5b7a8c42",
   "copyEngine": true
 }
 config.dirname = '/'

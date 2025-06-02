@@ -3,8 +3,9 @@ generator client {
 }
 
 generator edge_client {
-  provider = "prisma-client-js"
-  output   = "./prisma/edge"
+  provider      = "prisma-client-js"
+  output        = "./prisma/edge"
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
 }
 
 datasource db {
