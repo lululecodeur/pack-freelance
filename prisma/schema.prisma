@@ -1,13 +1,19 @@
 // prisma/schema.prisma
+
 generator client {
   provider = "prisma-client-js"
 }
+
+generator edge_client {
+  provider        = "prisma-client-js"
+  output          = "./edge"
+  previewFeatures = ["clientExtensions"]
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-
-
 
 model Freelance {
   id              Int      @id @default(autoincrement())

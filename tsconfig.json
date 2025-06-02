@@ -14,7 +14,8 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@prisma/edge": ["./prisma/edge"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
