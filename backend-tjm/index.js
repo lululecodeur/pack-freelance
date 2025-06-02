@@ -6,29 +6,32 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const app = express();
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    const allowedOrigins = [
-      'http://localhost:3000',
-      'http://localhost:3002',
-      'https://pack-freelance.vercel.app',
-    ];
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS: ' + origin));
-    }
-  },
-  methods: ['GET', 'POST', 'OPTIONS'],
-  credentials: true,
-};
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:3002',
+  'https://pack-freelance.vercel.app',
+];
 
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.log('⛔ Origin non autorisée:', origin);
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    methods: ['GET', 'POST', 'OPTIONS'],
+  })
+);
+
 app.use(bodyParser.json());
 
+app.options('*', cors()); // OPTIONS global
+
 app.post('/api/save-tjm', async (req, res) => {
-  console.log('📥 Reçu:', req.body);
+  console.log('📨 POST reçu:', req.body);
   const { email, objectifMensuel, joursParMois, tjmCalcule } = req.body;
 
   if (!email || !objectifMensuel || !joursParMois || !tjmCalcule) {
@@ -44,16 +47,16 @@ app.post('/api/save-tjm', async (req, res) => {
 
     res.status(200).json({ success: true, data: result });
   } catch (err) {
-    console.error('❌ Erreur Prisma:', err);
+    console.error('❌ Erreur Prisma :', err);
     res.status(500).json({ error: 'Erreur serveur', details: err.message });
   }
 });
 
 app.get('/', (req, res) => {
-  res.send('🚀 Backend TJM opérationnel');
+  res.send('🎉 Backend pack-freelance opérationnel !');
 });
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  console.log(`✅ Serveur lancé sur http://localhost:${PORT}`);
+  console.log(`🚀 Serveur live sur http://localhost:${PORT}`);
 });
