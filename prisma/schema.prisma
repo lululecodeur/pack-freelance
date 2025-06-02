@@ -1,0 +1,19 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Freelance {
+  id              Int      @id @default(autoincrement())
+  email           String   @unique
+  objectifMensuel Int
+  joursParMois    Int
+  tjmCalcule      Int
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
