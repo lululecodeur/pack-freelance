@@ -18,9 +18,12 @@ app.options('*', cors(corsOptions));
 app.use(bodyParser.json());
 
 app.post('/api/save-tjm', async (req, res) => {
+  console.log('📥 Reçu dans /api/save-tjm:', req.body);
+
   const { email, objectifMensuel, joursParMois, tjmCalcule } = req.body;
 
   if (!email || !objectifMensuel || !joursParMois || !tjmCalcule) {
+    console.warn('⛔ Données manquantes:', req.body);
     return res.status(400).json({ error: 'Champs manquants' });
   }
 
