@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator edge_client {
+  provider = "prisma-client-js"
+  output   = "./prisma/edge"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Freelance {
+  id              Int      @id @default(autoincrement())
+  email           String   @unique
+  objectifMensuel Int
+  joursParMois    Int
+  tjmCalcule      Int
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}

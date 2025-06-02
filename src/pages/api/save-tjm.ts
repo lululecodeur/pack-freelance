@@ -1,6 +1,4 @@
-// src/pages/api/save-tjm.ts
-import { PrismaClient } from '@prisma/edge';
-
+import { PrismaClient } from '@/../prisma/edge';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 const prisma = new PrismaClient();
@@ -26,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     res.status(200).json({ message: 'TJM sauvegardé', data: freelance });
   } catch (error: unknown) {
     if (error instanceof Error) {
-      console.error('❌ Prisma error:', error.message, error.stack);
+      console.error('❌ Prisma error:', error.message);
     }
     res.status(500).json({ error: 'Erreur serveur' });
   }

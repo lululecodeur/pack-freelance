@@ -1,13 +1,10 @@
-// prisma/schema.prisma
-
 generator client {
   provider = "prisma-client-js"
 }
 
 generator edge_client {
-  provider        = "prisma-client-js"
-  output          = "./edge"
-  previewFeatures = ["clientExtensions"]
+  provider = "prisma-client-js"
+  output   = "./prisma/edge"
 }
 
 datasource db {
