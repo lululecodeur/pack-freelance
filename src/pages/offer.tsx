@@ -19,7 +19,8 @@ export default function Offer() {
                   Tous vos documents juridiques générés par IA en quelques clics
                 </p>
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 mb-8">
-                  <p className="text-2xl font-semibold">⏰ Plus besoin de payer 500€+ d'avocat</p>
+                  <p>⏰ Plus besoin de payer 500€+ d&apos;avocat</p>
+
                   <p className="text-lg mt-2 opacity-90">
                     Obtenez tous vos documents professionnels en 5 minutes
                   </p>
@@ -38,9 +39,10 @@ export default function Offer() {
                   <div className="text-4xl mb-4">📋</div>
                   <h3 className="text-2xl font-bold mb-4 text-gray-800">CGU/CGV Personnalisées</h3>
                   <p className="text-gray-800 mb-4">
-                    Conditions générales d'utilisation et de vente adaptées à votre activité
+                    Conditions générales d&apos;utilisation et de vente adaptées à votre activité
                     freelance, générées par IA.
                   </p>
+
                   <ul className="text-sm text-gray-800 space-y-2">
                     <li>✓ Conformes au droit français</li>
                     <li>✓ Personnalisées selon votre secteur</li>
@@ -51,7 +53,7 @@ export default function Offer() {
                   <div className="text-4xl mb-4">📄</div>
                   <h3 className="text-2xl font-bold mb-4 text-gray-800">Contrats Freelance</h3>
                   <p className="text-gray-800 mb-4">
-                    Modèles de contrats prêts à l'emploi pour sécuriser vos missions.
+                    Modèles de contrats prêts à l&apos;emploi pour sécuriser vos missions.
                   </p>
                   <ul className="text-sm text-gray-800 space-y-2">
                     <li>✓ Contrat de prestation de service</li>
@@ -75,7 +77,7 @@ export default function Offer() {
                   <div className="text-4xl mb-4">💰</div>
                   <h3 className="text-2xl font-bold mb-4 text-gray-800">Générateur de Devis IA</h3>
                   <p className="text-gray-800 mb-4">
-                    Créez des devis professionnels en quelques secondes avec l'IA.
+                    Créez des devis professionnels en quelques secondes avec l&apos;IA.
                   </p>
                   <ul className="text-sm text-gray-800 space-y-2">
                     <li>✓ Templates personnalisables</li>
@@ -121,7 +123,7 @@ export default function Offer() {
                     </li>
                   </ul>
                   <a
-                    href="https://buy.stripe.com/test_cNi00l2w0c6D5Mn7ap9sk01"
+                    href="https://buy.stripe.com/6oU00i2L17eD90qdUl6AM00"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full bg-purple-600 text-white font-bold py-4 px-6 rounded-xl text-center hover:bg-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
@@ -164,7 +166,7 @@ export default function Offer() {
                     </li>
                   </ul>
                   <a
-                    href="https://buy.stripe.com/test_9B63cx5IcgmT2Ab66l9sk00"
+                    href="https://buy.stripe.com/9B6dR84T9fL96Si9E56AM01"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full bg-purple-600 text-white font-bold py-4 px-6 rounded-xl text-center hover:bg-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
@@ -215,7 +217,7 @@ export default function Offer() {
           <div className="py-16 bg-gray-50">
             <div className="container mx-auto px-6">
               <h2 className="text-4xl font-extrabold text-center mb-12 text-gray-900">
-                💬 Ce qu'en pensent les freelances
+                💬 Ce qu&apos;en pensent les freelances
               </h2>
               <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <div className="bg-white p-6 rounded-xl shadow-md">
@@ -229,8 +231,8 @@ export default function Offer() {
                     </div>
                   </div>
                   <p className="text-gray-800 leading-relaxed">
-                    “Incroyable ! J'ai économisé 800€ d'avocat et j'ai eu tous mes documents en 10
-                    minutes. Le générateur de devis est un game-changer !”
+                    “Incroyable ! J&apos;ai économisé 800€ d&apos;avocat et j&apos;ai eu tous mes
+                    documents en 10 minutes. Le générateur de devis est un game-changer !”
                   </p>
                 </div>
 
@@ -274,8 +276,8 @@ export default function Offer() {
                     Puis-je personnaliser les documents ?
                   </h3>
                   <p className="text-gray-700 leading-relaxed">
-                    Absolument ! L'IA adapte automatiquement les documents selon votre secteur
-                    d'activité et vos besoins spécifiques.
+                    Absolument ! L&apos;IA adapte automatiquement les documents selon votre secteur
+                    d&apos;activité et vos besoins spécifiques.
                   </p>
                 </div>
                 <div className="border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
@@ -283,8 +285,8 @@ export default function Offer() {
                     Y a-t-il des frais cachés ?
                   </h3>
                   <p className="text-gray-700 leading-relaxed">
-                    Non, c'est soit un paiement unique de 67€, soit un abonnement résiliable à tout
-                    moment. Aucun frais supplémentaire, jamais.
+                    Non, c&apos;est soit un paiement unique de 67€, soit un abonnement résiliable à
+                    tout moment. Aucun frais supplémentaire, jamais.
                   </p>
                 </div>
               </div>
