@@ -32,7 +32,8 @@ export default function Home() {
 
     try {
       const response = await fetch(
-        'https://pack-freelance-production.up.railway.app/api/save-tjm',
+        '/api/save-tjm',
+
         {
           method: 'POST',
           headers: {
