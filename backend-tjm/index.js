@@ -6,16 +6,16 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const app = express();
 
-app.use(
-  cors({
-    origin: 'https://pack-freelance.vercel.app',
-    methods: ['POST', 'GET', 'OPTIONS'],
-    credentials: false,
-  })
-);
+const corsOptions = {
+  origin: ['http://localhost:3000', 'http://localhost:3002', 'https://pack-freelance.vercel.app'],
+  methods: ['GET', 'POST', 'OPTIONS'],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 app.use(bodyParser.json());
-app.options('/api/save-tjm', cors());
 
 app.post('/api/save-tjm', async (req, res) => {
   const { email, objectifMensuel, joursParMois, tjmCalcule } = req.body;
@@ -33,7 +33,7 @@ app.post('/api/save-tjm', async (req, res) => {
 
     res.status(200).json({ success: true, data: result });
   } catch (err) {
-    console.error('❌ Erreur détaillée :', err); // ← affiche le vrai problème
+    console.error('❌ Erreur détaillée :', err);
     res.status(500).json({ error: 'Erreur serveur', details: err.message });
   }
 });
