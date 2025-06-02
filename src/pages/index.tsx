@@ -31,18 +31,21 @@ export default function Home() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/save-tjm', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          objectifMensuel,
-          joursParMois,
-          tjmCalcule,
-        }),
-      });
+      const response = await fetch(
+        'https://pack-freelance-production.up.railway.app/api/save-tjm',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email,
+            objectifMensuel,
+            joursParMois,
+            tjmCalcule,
+          }),
+        }
+      );
 
       const data = await response.json();
 
