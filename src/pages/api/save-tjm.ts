@@ -1,8 +1,4 @@
-export const config = {
-  runtime: 'nodejs',
-};
-
-import { PrismaClient } from '@/../prisma/edge';
+import { PrismaClient } from '@prisma/edge';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 const prisma = new PrismaClient();
